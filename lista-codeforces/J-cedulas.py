@@ -21,4 +21,4 @@ print(notas10, "nota(s) de R$ 10,00")
 print(notas5, "nota(s) de R$ 5,00")
 print(notas2, "nota(s) de R$ 2,00")
 print(notas1, "nota(s) de R$ 1,00")
-print(notas1, "nota(s) de R$ 1,00")
+
