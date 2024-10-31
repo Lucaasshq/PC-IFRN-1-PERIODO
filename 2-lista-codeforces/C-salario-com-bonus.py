@@ -9,7 +9,7 @@ def calcularComissao(total):
 print(nome)
 resultado = calcularComissao(totalVendas)
 print("R$ {:.2f}".format(resultado + sal))
-#concluido
+
 
 
 
