@@ -1,15 +1,10 @@
-a = int(input())
-b = int(input())
-c = int(input())
+# Lê os três números inteiros
+a = int(input("Digite o primeiro número (lado a): "))
+b = int(input("Digite o segundo número (lado b): "))
+c = int(input("Digite o terceiro número (lado c): "))
 
-maior = 0
-
-if(a > b and a > c):
-  maior = a
-elif(b > a and b > c):
-  maior = b
-elif(c > a and c > b):
-  maior = c
-
-
-print(maior)
+# Verifica se o maior lado (c) é o quadrado da soma dos quadrados dos outros dois lados
+if c**2 == a**2 + b**2 or a**2 == b**2 + c**2 or b**2 == a**2 + c**2:
+    print("Os valores formam um triângulo retângulo!")
+else:
+    print("Os valores não formam um triângulo retângulo.")
