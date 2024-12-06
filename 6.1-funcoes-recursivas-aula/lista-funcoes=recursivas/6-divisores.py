@@ -1,0 +1,4 @@
+
+
+
+""" def divisores(n,k) """
