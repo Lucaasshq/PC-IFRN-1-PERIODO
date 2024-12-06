@@ -9,14 +9,9 @@ def primo_r(x, d):
         return "é primo"
     
     if x % d == 0:
-        return "é primo"
+        return "não primo"     
 
-    else:
-        return "nâo é primo"        
-    
-
-
-
+    return primo_r(x, x-1)
 
 
 def primo(x):
