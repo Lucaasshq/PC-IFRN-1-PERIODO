@@ -4,14 +4,10 @@ def BinarioParaNatural(bin):
     return natural
   
 def BinarioParaComplementoDe2(binario):
-  
-
-
   listaDigitos = list(str(binario))
   if listaDigitos[0] == "0":
     resultado = BinarioParaNatural(binario)
     return resultado
-  
   
   binario = str(binario)
   c1 = ''
@@ -20,12 +16,9 @@ def BinarioParaComplementoDe2(binario):
       c1 += '1'
     else:
       c1 += '0'
-      
-      
+        
   complemento_de_2 = bin(int(c1, 2) + 1)[2:]
-  
   resultado = BinarioParaNatural(f"-{complemento_de_2}")
-  
   return resultado
 
 
