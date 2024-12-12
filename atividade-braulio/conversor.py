@@ -47,7 +47,7 @@ def Binario_para_ponto_fixo(binario):
     bits_fracionarios = 5
 
     parte_inteira = BinarioJoin[:bits_inteiros]
-    parte_fracionaria = BinarioJoin[bits_inteiros:bits_inteiros+bits_fracionarios]
+    parte_fracionaria = BinarioJoin[bits_inteiros : bits_inteiros + bits_fracionarios]
 
     inteiro_decimal = int(parte_inteira, 2)
     fracao_decimal = 0
@@ -58,10 +58,32 @@ def Binario_para_ponto_fixo(binario):
 
     trocarPontoPorVirgula = str(resultado_decimal).replace(".", ",")
     if sinal == "1":
-      negativo = "-" + trocarPontoPorVirgula
-      return negativo
+        negativo = "-" + trocarPontoPorVirgula
+        return negativo
 
     return trocarPontoPorVirgula
+
+
+def binario_para_ponto_flutuante(binario):
+    binario = str(binario).zfill(12)
+
+    sinal = int(binario[0])
+    expoente_binario = binario[1:6]
+    mantisa_binario = binario[6:]
+
+    if expoente_binario[0] == "1":
+        expoente = -BinarioParaComplementoDe2(expoente_binario)
+
+    else:
+        expoente = int(expoente_binario, 2)
+
+    mantissa_decimal = 1.0
+    for i, bit in enumerate(mantisa_binario):
+        mantissa_decimal += int(bit) * (2 ** -(i + 1))
+
+    resultado_final = (-1) ** sinal * mantissa_decimal * (2**expoente)
+
+    return resultado_final
 
 
 print("======Formato de entrada 12 bits======")
@@ -83,8 +105,9 @@ if escolha_menu == 1:
     complementoDe2 = BinarioParaComplementoDe2(valor)
     s_m = binario_para_S_M(valor)
     p_fixo = Binario_para_ponto_fixo(valor)
+    p_flutuante = binario_para_ponto_flutuante(valor)
     print("======Tabela======")
     print(
-        f"Binario = {valor} || Natural = {natural} || S.M {s_m} || C2 = {complementoDe2} || P.FIXO = {p_fixo}"
+        f"Binario = {valor} | Natural = {natural} | S.M {s_m} | C2 = {complementoDe2} | P.FIXO = {p_fixo} | P.Flutuante = {p_flutuante}"
     )
     print("==================")
