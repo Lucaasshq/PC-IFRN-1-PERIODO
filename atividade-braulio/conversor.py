@@ -1,3 +1,39 @@
+def sinal_magnitude_para_binario(n):
+    n = int(n)
+    if n >= 0:
+        sinal = 0
+    else:
+        sinal = 1
+
+    magnitude = abs(n)
+
+    binario_magnitude = bin(magnitude)[2:].zfill(11)
+
+    binario_com_sinal = str(sinal) + binario_magnitude
+
+    return binario_com_sinal
+
+
+def complementoDe_2_para_binario(n):
+    n = int(n)
+    if n < 0:
+        n = abs(n)
+        binario = bin(n)[2:].zfill(12)
+        binario_complemento = "".join("1" if bit == "0" else "0" for bit in binario)
+        binario_complemento = bin(int(binario_complemento, 2) + 1)[2:].zfill(12)
+        return binario_complemento
+
+    else:
+        return bin(n)[2:].zfill(12)
+
+
+def natural_para_binario(natural):
+    natural = int(natural)
+    binario = bin(natural)[2:]
+    binario_12_bits = binario.zfill(12)
+    return binario_12_bits
+
+
 def BinarioParaNatural(bin):
     binario = str(bin)
     natural = int(binario, 2)
@@ -90,24 +126,62 @@ print("======Formato de entrada 12 bits======")
 print("1 - Binario")
 print("2 - Natural")
 print("3 - Complemento de 2")
-print("5 - Sinal magnitude")
-print("6 - Ponto fixo")
-print("7 - Ponto flutuante")
-print("==============================")
+print("4 - Sinal magnitude")
+print("5 - Ponto fixo")
+print("6 - Ponto flutuante")
+print("======================================")
 
 
 escolha_menu = int(input())
 print("Digite o valor")
-valor = input()
+entrada = input()
 
 if escolha_menu == 1:
-    natural = BinarioParaNatural(valor)
-    complementoDe2 = BinarioParaComplementoDe2(valor)
-    s_m = binario_para_S_M(valor)
-    p_fixo = Binario_para_ponto_fixo(valor)
-    p_flutuante = binario_para_ponto_flutuante(valor)
-    print("======Tabela======")
+    natural = BinarioParaNatural(entrada)
+    complementoDe2 = BinarioParaComplementoDe2(entrada)
+    s_m = binario_para_S_M(entrada)
+    p_fixo = Binario_para_ponto_fixo(entrada)
+    p_flutuante = binario_para_ponto_flutuante(entrada)
+    print("============================================================================================================")
     print(
-        f"Binario = {valor} | Natural = {natural} | S.M {s_m} | C2 = {complementoDe2} | P.FIXO = {p_fixo} | P.Flutuante = {p_flutuante}"
+        f"Binario = {entrada} | Natural = {natural} | S.M {s_m} | C2 = {complementoDe2} | P.FIXO = {p_fixo} | P.Flutuante = {p_flutuante}"
     )
-    print("==================")
+    print("============================================================================================================")
+
+if escolha_menu == 2:
+    natural = entrada
+    binario = natural_para_binario(natural)
+    s_m = binario_para_S_M(binario)
+    complementoDe2 = BinarioParaComplementoDe2(binario)
+    p_fixo = Binario_para_ponto_fixo(binario)
+    p_flutuante = binario_para_ponto_flutuante(binario)
+    print("============================================================================================================")
+    print(
+        f"Binario = {binario} | Natural = {natural} | S.M {s_m} | C2 = {complementoDe2} | P.FIXO = {p_fixo} | P.Flutuante = {p_flutuante}"
+    )
+    print("============================================================================================================")
+if escolha_menu == 3:
+    binario = complementoDe_2_para_binario(entrada)
+    natural = BinarioParaNatural(binario)
+    s_m = binario_para_S_M(binario)
+    complementoDe2 = entrada
+    p_fixo = Binario_para_ponto_fixo(binario)
+    p_flutuante = binario_para_ponto_flutuante(binario)
+    print("============================================================================================================")
+    print(
+        f"Binario = {binario} | Natural = {natural} | C2 = {complementoDe2} | S.M {s_m} | P.FIXO = {p_fixo} | P.Flutuante = {p_flutuante}"
+    )
+    print("============================================================================================================")
+
+if escolha_menu == 4:
+    binario = sinal_magnitude_para_binario(entrada)
+    natural = BinarioParaNatural(binario)
+    s_m = binario_para_S_M(binario)
+    complementoDe2 = BinarioParaComplementoDe2(binario)
+    p_fixo = Binario_para_ponto_fixo(binario)
+    p_flutuante = binario_para_ponto_flutuante(binario)
+    print("======Tabela================================================================================================")
+    print(
+        f"Binario = {binario} | Natural = {natural} | C2 = {complementoDe2} | S.M {s_m} | P.FIXO = {p_fixo} | P.Flutuante = {p_flutuante}"
+    )
+    print("============================================================================================================")
