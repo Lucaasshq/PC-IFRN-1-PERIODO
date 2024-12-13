@@ -1,6 +1,3 @@
-def ponto_flutuante_para_binario(n):
-    return None
-
 def ponto_fixo_para_binario(n, bits_fracionarios=5):
 
     n = float(n)
@@ -151,6 +148,44 @@ def binario_para_ponto_flutuante(binario):
     return resultado_final
 
 
+def ponto_flutuante_para_binario(numero, bits_expoente=5, bits_mantissa=7):
+    numero = float(numero)
+
+    if numero < 0:
+        sinal = "1"
+        numero = -numero
+    else:
+        sinal = "0"
+
+    parte_inteira = int(numero)
+    parte_fracionaria = numero - parte_inteira
+
+    binario_inteiro = bin(parte_inteira)[2:]
+
+    binario_fracionario = ""
+    while parte_fracionaria > 0 and len(binario_fracionario) < bits_mantissa:
+        parte_fracionaria *= 2
+        bit = int(parte_fracionaria)
+        binario_fracionario += str(bit)
+        parte_fracionaria -= bit
+
+    if len(binario_inteiro) > 1:
+        expoente = len(binario_inteiro) - 1
+        binario_inteiro = binario_inteiro[1:]
+    else:
+        expoente = 0
+
+    mantissa = binario_inteiro + binario_fracionario
+    mantissa = mantissa[:bits_mantissa]
+
+    vies = 2 ** (bits_expoente - 1) - 1
+    expoente_binario = bin(expoente + vies)[2:].zfill(bits_expoente)
+
+    binario_ponto_flutuante = sinal + expoente_binario + mantissa
+
+    return binario_ponto_flutuante.zfill(bits_expoente + bits_mantissa + 1)
+
+
 print("======Formato de entrada 12 bits======")
 print("1 - Binario")
 print("2 - Natural")
@@ -247,11 +282,16 @@ if escolha_menu == 5:
     print(
         "============================================================================================================"
     )
-    
+
 if escolha_menu == 6:
     binario = ponto_flutuante_para_binario(entrada)
+    natural = BinarioParaNatural(binario)
+    c2 = BinarioParaComplementoDe2(binario)
+    s_m = binario_para_S_M(binario)
+    p_fixo = Binario_para_ponto_fixo(binario)
+    p_flutuante = binario_para_ponto_flutuante(binario)
     print(
-        f"Binario = {binario}"
+        f"Binario = {binario} | Natural = {natural} | C2 = {c2} | S.M {s_m} | P.FIXO = {p_fixo} | P.Flutuante = {p_flutuante}"
     )
     print(
         "============================================================================================================"
