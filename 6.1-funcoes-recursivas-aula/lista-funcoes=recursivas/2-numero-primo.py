@@ -2,21 +2,22 @@
 Assinatura da função: def primo(n) """
 
 
-n1 = int(input())
 
-def primo_r(x, d):
-    if d == 1:
+
+def primo_r(num, div):
+    if div == 1:
         return "é primo"
-    
-    if x % d == 0:
-        return "não primo"     
 
-    return primo_r(x, x-1)
+    if num % div == 0:
+        return "não primo"
+
+    return primo_r(num, div - 1)
 
 
 def primo(x):
-    return primo_r(x, x-1)
+    return primo_r(x, x - 1)
 
+n1 = int(input())
 
 res = primo(n1)
 print(res)

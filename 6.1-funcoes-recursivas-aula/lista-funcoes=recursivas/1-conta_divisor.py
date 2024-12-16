@@ -9,10 +9,9 @@ def divisor_R(n, div):
     else:
       return 0 + divisor_R(n, div - 1)
     
-def contarDivisor(n):
-  return divisor_R(n, n)
+
    
   
   
-res = contarDivisor(720)
+res = divisor_R(720, 720)
 print(res)

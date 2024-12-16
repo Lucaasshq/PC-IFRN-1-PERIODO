@@ -6,9 +6,9 @@ def contar_r(n):
   
   return 1 + contar_r(n // 10)
 
-def conta_algarismos(n):
-  return contar_r(n)
 
 
-res = conta_algarismos(100)
+
+
+res = contar_r(100)
 print(res)
