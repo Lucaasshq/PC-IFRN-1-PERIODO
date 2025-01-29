@@ -1,22 +1,17 @@
-# Leitura dos dados de entrada
-N = int(input().strip())  # número de medições
-batimentos = [int(input().strip()) for _ in range(N)]  # lista de batimentos cardíacos
+# Leitura da entrada
+N = int(input().strip())
+batimentos = [int(input().strip()) for _ in range(N)]
 
-# Cálculo da média dos batimentos cardíacos
-media = sum(batimentos) / N
+# Cálculo da média
+media = sum(batimentos) // N
 
-# Arredondamento da média para baixo
-media_arredondada = int(media)  # Convertendo para inteiro para arredondar para baixo
+# Cálculo dos limites de 10%
+limite_inferior = media * 0.9
+limite_superior = media * 1.1
 
-# Determinação dos batimentos fora do intervalo de 10% da média arredondada
-limite_inferior = media_arredondada * 0.9
-limite_superior = media_arredondada * 1.1
+# Contagem das medições fora do intervalo
+contagem_fora_intervalo = sum(1 for b in batimentos if b < limite_inferior or b > limite_superior)
 
-fora_intervalo = 0
-for batimento in batimentos:
-    if batimento < limite_inferior or batimento > limite_superior:
-        fora_intervalo += 1
-
-# Saída dos resultados
-print(media_arredondada)  # média arredondada para baixo
-print(fora_intervalo)  # número de medições fora do intervalo de 10%
+# Saída
+print(media)
+print(contagem_fora_intervalo)
