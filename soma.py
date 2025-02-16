@@ -1,7 +1,4 @@
-numeros = [5,5,5,5,5]
-soma = 0
-for i in numeros:
-  soma += i
+def dobro(num):
+    return num * 2
   
-print(soma)
-
+print(dobro(5)) # 10
