@@ -22,4 +22,4 @@ while True:
     elif digito_M > digito_N:
         print(2)
     else:
-        print(0)
+        print(0) 
